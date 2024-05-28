@@ -1,0 +1,16 @@
+(Abstract/Parent) magic
+				/       \
+(Child/Derived)Ice     (Child/Derived)Cure
+
+magic source[magic* 4] < learn magic
+
+character invenory[magic* 4] < create,equip,use
+
+
+		Ice			Cure
+			\		/
+			AMateria
+			/		\
+	  Character   MateriaSource
+		   |		 |
+	  ICharacter  IMateriaSource

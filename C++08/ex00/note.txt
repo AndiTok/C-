@@ -1,0 +1,54 @@
+ex00
+
+standard template library (STL)
+container
+algorithm
+iterator ++ --
+
+https://www.geeksforgeeks.org/the-c-standard-template-library-stl/?ref=lbp
+https://en.cppreference.com/w/cpp/algorithm
+https://cplusplus.com/reference/algorithm/
+https://cplusplus.com/reference/iterator/
+https://cplusplus.com/reference/vector/
+
+<iterator> is like base class to containers eg. <vector>
+
+
+Here's a comprehensive list of containers available in C++98:
+
+Sequence Containers:
+std::vector<T>: Dynamic array with contiguous memory.
+std::deque<T>: Double-ended queue.
+std::list<T>: Doubly linked list.
+std::queue<T, Container>: FIFO queue (adaptor).
+std::stack<T, Container>: LIFO stack (adaptor).
+
+Associative Containers:
+std::set<T>: Set of unique, sorted elements.
+std::multiset<T>: Set of sorted elements with possible duplicates.
+std::map<Key, T>: Map of key-value pairs with unique keys.
+std::multimap<Key, T>: Map of key-value pairs with possible duplicate keys.
+
+Container Adaptors:
+std::queue<T, Container>: Adaptor for FIFO behavior.
+std::stack<T, Container>: Adaptor for LIFO behavior.
+
+Smart Pointers:
+std::auto_ptr<T>: Deprecated smart pointer for managing dynamic memory.
+
+Other Containers:
+std::bitset<N>: Container for managing a fixed number of bits.
+std::valarray<T>: Container for representing and manipulating arrays of values.
+std::pair<T1, T2>: Container for storing a pair of values.
+std::string: String class for managing sequences of characters.
+
+//====================
+<only in C++11>
+
+std::array<T, N> 
+Represents a fixed-size array of elements of type T with size N.
+
+instantiating at main
+std::vector<int> vec = {...}
+std::deque<int> deq = {...}
+std::list<int> lst = {...}

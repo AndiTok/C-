@@ -1,0 +1,96 @@
+ex02
+
+https://github.com/decidedlyso/merge-insertion-sort
+https://en.wikipedia.org/wiki/Merge-insertion_sort
+https://github.com/PunkChameleon/ford-johnson-merge-insertion-sort
+https://www.reddit.com/r/algorithms/comments/1bajgye/merge_insertion_ford_johnson/
+https://www.reddit.com/r/algorithms/comments/11x3rkh/step_3_of_mergeinsertion_sort_confuses_me_on/
+https://github.com/PunkChameleon/ford-johnson-merge-insertion-sort
+https://cplusplus.com/reference/algorithm/
+https://www.mathwords.com/s/set_subtraction.htm
+https://digilent.com/blog/recursive-sorting-algorithms/
+
+https://www.geeksforgeeks.org/binary-search/
+https://www.geeksforgeeks.org/deque-vs-vector-in-c-stl/
+https://www.geeksforgeeks.org/deque-cpp-stl/
+https://www.geeksforgeeks.org/vector-in-cpp-stl/
+https://www.geeksforgeeks.org/merge-sort/
+https://www.geeksforgeeks.org/insertion-sort/
+
+
+https://cplusplus.com/reference/ctime/clock/
+
+https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
+
+5,3,4,1,2,8,7 <- if odd
+pair up
+5,3  4,1  2,8  7 <- store in tmp container
+ >    >    <
+greater
+5,4,8
+smaller
+3,1,2
+
+recursive sort greater list untill ascending
+while maintining its coresponding partnerd pair in smaller list
+4,5,8
+1,3,2
+
+place the smaller[0] intto bigger [0]
+1,4,5,8
+3,2
+
+insert smaller into greater 
+binary search between 1 & 4 wehre 1 is the "floor" and 4 is hte "ceiling"
+> 1,4,< 5,8
+3,2
+
+1,3,4,5,8
+2
+
+"floor" will be always the beginning [0] while celing +2
+> 1,3,4,5,8 <
+2
+
+1,2,3,4,5,8
+
+place strangler if anything 7 <- stangler in tmp container
+1,2,3,4,5,6,7,8
+
+using abigger sampling size will amke things more clear and obviosu why
+ceiling +2
+
+the paring and sorting in the beginning resembles merge-sort
+instead of dividing and conqure, we divide into pair and sort,
+then place them into 2 group and sort parallely
+eg
+1,4,20,11,26,6,10,14
+1,4 | 26,6 | 20,11 | 10,14 
+B-> 4,26,20,14
+S-> 1,6,11,10
+sort
+B-> 4,14,20,26
+S-> 1,10,11,6
+
+later on is insert-sort but instead of looking at the whole array,
+we can minimize the search by a significant amount due to how it was pre sorted.
+the number being inserted in this case from smaller group to bigger group
+will alwasy be on the "left side".
+as we insert more, we expand the search by increment of 2
+eg
+S -> 1,10,11,6 | 4,14,20,26 <- B
+
+PS
+Vecotr sorts faster tha deque M<AINLY due to memory layout
+Vec it sotres it's data "contiguosly" aka side by side
+which make acessing/pointing more efficient
+rather than in different memory blocks
+
+void ft_numbers(int i) // void becase we dont need to return anything
+{
+	if (i > 9) // if is > 9 i will do recursive then only write
+	{
+		ft_numbers(i / 10);
+	}
+	write (1, &"0123456789"[i % 10], 1); // if is < 9 it will skip hte if and write 
+}

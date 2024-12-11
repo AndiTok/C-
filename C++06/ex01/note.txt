@@ -1,0 +1,52 @@
+ex01
+
+type casting again?
+instead of static_cast<...>()
+we use reinterpret_cast<...>()
+
+whats the difference?
+reinterpret deals with pointer address
+relatively unsafe
+it reinteprate pointer address to any numerical type & vice versa
+it can also help points from 1 funtion to another funtion
+as it deals with address
+
+static is much safer
+it can "downcast" or "upcast" from pointer to base pointer
+Data *data to Data data or Data data to Data *data
+it also can convert between say chat to int, int to double, double to float
+
+In practice, use static_cast when you need a safe, type-checked conversion, and 
+reserve reinterpret_cast for situations where you need a low-level cast and 
+are certain about the safety and correctness of the conversion.
+
+The point of this exercise
+pointer address (hexadecimal)
+serialize conver to int then
+deserialize conver int back to hexadecimal 
+
+
+only static methods/funtion() can call it below
+classname::Staicfunction();
+--
+Serializer::serialize()
+
+non statis uses the '.' method must be called using object (need to initialize class)
+classname obj;
+obj.Somefunction();
+--
+Serealizer s;
+s.seralize()
+
+
+main()
+print Data address
+run serealize()
+print serialize address
+then run deserealize()
+print deserialize address
+
+output:
+Original Data address should be the same as deserealize address 
+serialize address is a hex convert to int number 
+https://www.rapidtables.com/convert/number/hex-to-decimal.html

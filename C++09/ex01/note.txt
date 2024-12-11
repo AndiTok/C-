@@ -1,0 +1,21 @@
+ex01
+
+stack container LIFO
+
+https://www.dcode.fr/reverse-polish-notation // << works with 0 - 9 number
+https://www.rpn-calc.com // << works with > 9 number
+https://www.youtube.com/watch?v=QM_RsQ9Yeio // << using python wehre pop()return the value
+https://www.youtube.com/watch?v=MJ23yC-1tVw // << using java wehre pop() return a value
+https://www.youtube.com/@KeepOnCoding
+
+for "5 8 -"
+is 5 - 8 = -3
+thefor - & /
+the position/sequence matters
+
+if 1st top is a = 8
+the 2nd top is b = 5
+so will be b - a
+
+it does not matter for + & *
+

@@ -1,0 +1,78 @@
+ex02
+
+now we learn dynamic casting?
+dynamic_cast<...>()
+
+reinterpret_cast - does not peform any checks
+static_cast - checks during compilation
+dynamic_cast - checks at runtime
+
+dynamic_cast info
+used in polymorphic class hierarchies, especially when dealing with 
+pointers or references to base and derived classes to >>downcast<<
+
+It also checks object type
+
+If the cast succeeds, (void identify(Base* p);)
+it means the object is of the expected type 
+or a derived type.
+
+If it fails 
+it returns a null pointer for pointers or (void identify(Base* p);)
+throws a std::bad_cast exception for references. (void identify(Base& p);)
+Meaning the object is not of the expected type.
+
+Solution
+generate()
+using any method to generate randome number
+according to the number create new base class
+
+identify(Base* p)
+this one is easy as we can use pointer
+is the derived class address the same as the base class generated address?
+dynamic_cast the p (Base class) addresss to A or B or C (derived Class) address
+
+identiofy(Base &p)
+here we cant use pointer (address)
+so we use try and catch
+if try cast refernce successfull, it is that specific class
+
+P/S
+Base class are the top of heirachy
+Derived class or below
+	  Base
+	 /  |  \
+    A	B	C
+In summary, upcasting moves from derived to base classes, 
+treating objects as their base type, 
+while downcasting moves from base to derived classes, 
+allowing access to derived-specific functionalities.
+
+In this case, Base created A or B or C
+we dont know which derived class it created
+all we know it is from Base
+
+by running dynamic_cast<A or B or C> (Base) [need to include * or &]
+we "down cast" Base to either A, B or C
+if successfull it will return either a pointer(*) or reference (&)
+depending on what the nature of Base is
+else it will retunr nullptr if unsuccessfull
+
+Dynamic Cast for Pointers (dynamic_cast<DerivedClass*>(BasePtr)):
+
+When casting pointers using dynamic_cast, 
+if the cast is successful 
+(i.e., the object pointed to by BasePtr is of the correct derived type or a type derived from it),
+it returns a pointer to the derived class (DerivedClass*).
+If the cast fails 
+(i.e., the object is not of the expected type or a derived type), 
+it returns a null pointer (nullptr).
+
+Dynamic Cast for References (dynamic_cast<DerivedClass&>(BaseRef)):
+When casting references using dynamic_cast, 
+if the cast is successful 
+(i.e., the object referred to by BaseRef is of the correct derived type or a type derived from it),
+it returns a reference to the derived class (DerivedClass&).
+If the cast fails
+(i.e., the object is not of the expected type or a derived type),
+it throws a std::bad_cast exception.

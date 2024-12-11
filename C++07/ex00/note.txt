@@ -1,0 +1,9 @@
+ex00
+
+here we learn about "funtion template"
+suprizingly easy
+
+https://isocpp.org/wiki/faq/templates [swap answer]
+
+https://www.geeksforgeeks.org/templates-cpp/ [min/max answer]
+

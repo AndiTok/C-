@@ -1,0 +1,12 @@
+ex02
+
+now we r doing class template
+
+https://www.programiz.com/cpp-programming/class-templates
+https://www.geeksforgeeks.org/templates-cpp/
+https://en.cppreference.com/w/cpp/language/class_template
+https://stackoverflow.com/questions/71558717/proper-use-of-template-classes
+https://www.javatpoint.com/cpp-templates
+https://www.youtube.com/watch?v=ttOM3HulFyU
+
+https://www.geeksforgeeks.org/overloading-subscript-or-array-index-operator-in-c/

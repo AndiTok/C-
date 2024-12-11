@@ -1,0 +1,8 @@
+ex01
+
+https://www.geeksforgeeks.org/passing-a-function-as-a-parameter-in-cpp/
+https://stackoverflow.com/questions/45581843/c-98-array-size
+
+basically a much more complicated template function
+that takes in multiple type of parameter
+which <typename T> should be the same?

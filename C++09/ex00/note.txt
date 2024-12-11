@@ -1,0 +1,78 @@
+ex00
+
+map container
+key - value
+date | value
+
+must be ./btc NOT ./a.out or ./ex00
+
+$> cat file same as $>head file
+except head only shows the 1st 10 line of the file
+
+use lower date if date not found as in the earlier date
+
+sample output
+$> ./btc
+Error: could not open file. // expecting input.txt
+
+$> ./btc input.txt
+2011-01-03 => 3 = 0.9
+2011-01-03 => 2 = 0.6
+2011-01-03 => 1 = 0.3
+2011-01-03 => 1.2 = 0.36
+2011-01-09 => 1 = 0.32
+Error: not a positive number. // nagative number
+Error: bad input => 2001-42-42 // invalid date,no value
+2012-01-11 => 1 = 7.1
+Error: too large a number // > 1000
+$>
+
+/* implementation steps */
+check "av[1] aka input.txt" can be open
+check if empty
+
+parse and map csv <date,val> as data
+conver a string date to sec or days since epoch time
+
+
+get and check input.txt line by line
+while getline()
+split and store line into -> string date & string line
+trim wihite spaces for both data and value
+
+if line not in format without '|' print error
+if line is header skip using continue
+
+if is not header
+conver date and value to long and float respectively
+check valid input
+check date is valid
+check value is not negative
+check value to not exceed 1000
+
+set csv iterator beign and end , with end-- to not point at end/npos/null
+handel upper and lower bound dates
+which csv begin != csv end
+find matching dates
+if date is larger begin-- and use that
+output = csv value * input value
+
+print date store in string
+print => 
+print input val stired in string
+print =
+print data output [csv val * input val]
+
+done!
+
+conver std::string date to a number aka days
+getline()??
+use find input date in csv date if no find,
+-1 day input and try till ==
+
+https://en.cppreference.com/w/cpp/chrono/c/mktime
+https://www.epochconverter.com/
+https://cplusplus.com/reference/cctype/isspace/
+https://www.geeksforgeeks.org/stdremove-stdremove_if-c/
+https://cplusplus.com/reference/algorithm/remove_if/
+https://www.geeksforgeeks.org/vector-erase-and-clear-in-cpp/

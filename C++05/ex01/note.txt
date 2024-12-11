@@ -1,0 +1,17 @@
+ex01
+
+learn about taking in another class as a parameter
+and that const attribute cannot be modified AT ALL
+as it can only be initialized by constructor(s)
+which will affect the copy constructor and copy assingment operator
+
+also note that we use private and not protected for Forms' attribute
+if form is private only From class can modify the attribute
+if protected, both From and concrete class can modify Form's attribute
+
+but currenttly we have Burea & Form class
+that is why Bure is unable to modify the bool _signed
+also because we were explicited told that 
+From changes the value
+&
+Burea only checks the status

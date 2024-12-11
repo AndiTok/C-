@@ -1,0 +1,44 @@
+ex02
+
+interestingly
+template<typename T> & template<class T>
+are interchangable and essentially the same
+
+https://en.cppreference.com/w/cpp/container/stack
+https://cplusplus.com/reference/stack/stack/
+https://www.geeksforgeeks.org/stack-in-cpp-stl/
+https://www.geeksforgeeks.org/list-cpp-stl/
+
+default stack template Defined in header <stack>
+template<class T, class Container = std::deque<T>> class stack;
+
+basically we use stack as the base class (inherit)
+
+p/s
+vector can push and pop both ends (back/front)
+stack by default operate in a FIFO manner
+
+eg 
+push 5 push 7 push 8 push 4
+the array will be 5,7,8,4
+pop
+the array will be 5,7,8
+it will always affect the latest elements
+
+with vector, it can go bothways
+
+if elements are push_back
+back will be the head
+and therefor pop_back
+to simulate stack container behaviour
+
+if elements are push_front
+front will be the head
+and therefor pop_front
+to simulate stack container behaviour
+
+HOWEVER
+in this case the push_back accuratly depic stack better
+just by how the elemnts are arranged
+notably the sequence when printing out
+from left to right (begin to end)

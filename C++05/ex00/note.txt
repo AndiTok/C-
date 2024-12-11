@@ -1,0 +1,6 @@
+ex00
+
+we learn about throwing exception
+and that the try and catch block is able to "catch" the error
+this prevent the creation of "out of bound/parameter" Burea
+having a class or classes in a class

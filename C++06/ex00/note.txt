@@ -1,0 +1,100 @@
+ex00
+
+staic_cast<...>
+
+the only funtion 
+void ScalarConverter::convert(std::string input) or
+void ScalarConverter::convert(std::string &input)
+which ever you like
+one makes a copy of input and the other (&)reference the input
+
+at main this is how it is used
+	ScalarConverter::convert(std::string("test")); or
+	ScalarConverter::convert("test");
+both the system will detect it as const char []
+either one works
+
+to tackle this,
+you must 1st determine what the "input" is...
+is it a char? or int? or float? or double? or std::string?
+Then convert the "std::string input" into 
+char or int or float or double or std::string?? (in this case all prompt impossible)
+
+
+example of posible input & what it should detect or be identfied as
+keep in mins we r using " int main (int ac, char **av) " (remember minishell project)
+A       -> char printable
+z       -> char printable
+!       -> char printable
+        -> char printable space
+\n      -> char no displayable shouldnot be input
+\t      -> char no displayable shouldnot be input
+'y'     -> char becase elclosed single quote 
+'235'   -> char due to enclosed single quote
+"x"     -> string because enclosed double quote
+"2.7f"  -> string due to enclosed double quote
+test    -> string due to being > 1 char
+'test'  -> string due to being > 1 char && enclosed single quote
+"test"  -> string due to being > 1 char && enclosed double quote
+42      -> int due to no decimal
+42.0    -> double due to having 1 decimal
+42.0f   -> float due to having both 1 single decimal and 1 single f at the end
+NOTE: for digits/numbers there may include + or - sign at the beginning
+
+
+SOLUTION to "detect"
+use c_str() which convert std::string to char*
+char *str = input.c_str()
+(OR maybe just str8 c-style while loop TBD/A)
+check for -inf, +inf, nan, -inff, +inff & nanf (as a whole std::string)
+work your way up from small to big in sequence (char>int>float>double)
+
+	// if str contain only 1 character = char
+	// if str no decimal & no f = int
+	// if str contain decimal and f = float
+	// if str contain decimal and no f = double
+
+<INFOS>
+char   = Ascii 32 to 126 (printable charcters which include SPACE(32))
+
+https://stackoverflow.com/questions/48630106/what-are-the-actual-min-max-values-for-float-and-double-c
+https://cplusplus.com/reference/limits/numeric_limits/
+<limit> 
+std::numeric_limits<int>::min()
+std::numeric_limits<int>::max()
+
+std::numeric_limits<float>::lowest()
+std::numeric_limits<float>::max()
+
+std::numeric_limits<double>::lowest()
+std::numeric_limits<double>::max()
+*for float and double using min() retun smallest positive normalized value
+
+int    = INT_MIN –2147483648 to 2147483647 INT_MAX (signed value)
+
+float  = FLT_MIN 1.17549435e-38F to 3.40282347e+38F FLT_MAX
+double = DBL_MIN 2.2250738585072014e-308 to 1.7976931348623158e+308 DBL_MAX
+* all the MIN except for INT are Minimum normalized positive value
+
+cout.precision() required to the full number (refer stackoverflow link)
+
+literal charcteristics
+A char literal is a single character enclosed in single quotes.
+IN SHORT numbers from 0 - 127 OR 1 single Ascii charcter
+a) Non displayable = ASCII 0 to 31
+b) impossiblle = < 0 && > 127
+c) for displayable/printable
+  ' ' = ASCII 32 to 126 in between ' '
+
+An int literal consists only of digits and an optional leading minus or plus sign
+a) impossible = beyond INT_MAX or INT_MIN
+b) print = within INT_MAX && INT_MIN
+
+A float literal contains digits, a decimal point, and an f at the end.
+Hard code special case -inff, +inff, and nanf.
+
+A double literal contains digits and a decimal point.
+Hard code special cases -inf, +inf, and nan.
+
+IMPORTANT 
+"test" aka string = all impossible to convert

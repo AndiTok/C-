@@ -1,0 +1,40 @@
+ex02
+
+here we learn about abstract class (refer to CPP04 especially ex03 bonus execise)
+the difference between pure virtual (aka = 0) and just virtual
+as well as concrete class aka derived class (similar to CPP03 claptrap)
+notably "From class" which is renamed to AForm (A indicating abstract)
+
+notice that the "virtual" syntax is on the deconstructor as well as
+the execute() funtion which will allow concrete class to override it
+(p/s - is better to place override syntax on the concrete class funtion)
+(reason being it is able to catch error if there is typo eg
+ concrete class funtion name is execute <-e 
+ abstract class funtion name is executa <-a
+ if concrete class has overide syntax it will inform you
+ if not it wil assume the funtion is it's own 
+ and unable cant access abtract class attribute/funtions)
+//i only found out about it toward the end....
+
+ALSO to knwo the difference between protected and private
+if the Abstract class (aka Base class) uses private
+u will need getter/setter funtion to get and set attributes
+if it is protected, it is not needed as it kinda shares it
+(reffer to CPP03)
+
+//execute trough Burea 
+void Bureaucrat::signForm(AForm& form)
+only checks the form if it is signed or not
+if not it will tell you why
+
+void Bureaucrat::executeForm(AForm const & form)
+will execute form WITHOUT throwing exception
+-------
+//execute trough From's Concrete calss
+void AForm::execute(Bureaucrat const & executor) const
+will check if it is signed & able to executre before executing
+if not WILL throw exceptions
+
+void AForm::beSigned(const Bureaucrat& burea)
+will change _signed to true (aka sign form) else exception error
+

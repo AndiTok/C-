@@ -1,0 +1,31 @@
+ex01
+
+the _N & _container are moved to public so i dont have to make getter/setter fucntion
+
+
+/* u-trun redo stuff */
+go back to C05 redo some stuff
+<random> C++11 not allowed
+in make file should include - I *.hpp in flag
+to check headers as my heasder are all in hpp
+currently it is unable to check .hpp...
+if not run g++ -std=c++98 -Wall -Wextra -Werror *.cpp *.hpp as a precaution
+//-----
+repalced all <random> use to <cstdlib> & <ctime> // done
+ofstream extra error issue at shrub // fixed
+
+check Burea copy constructor
+check all Form & AForm for their copy and agginment operator again...
+check the concrete classes as well... as it will effectt them
+migh as well chekc Burea too...
+
+the copy and assignment operator should be deep copy
+copy operator add ...) ":" .... to instantiate
+the assingment operator... WIP [ref below]
+https://stackoverflow.com/questions/4136156/const-member-and-assignment-operator-how-to-avoid-the-undefined-behavior
+AForm a = Aform b
+by doing =
+we are essentially trying to modify attirbutes of a to be b
+
+copy on the other hand is a type of constructor wehre is initialize
+object using another object of the same class (hence getter() to get the data)

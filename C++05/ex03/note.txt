@@ -1,0 +1,111 @@
+ex03
+
+here we learn about...
+
+a class that is connect to a base/abstract class which
+the class is able to access trough "a class pointing to the base class funtion"
+as shown below 
+
+> Intern <
+   ||
+   \/
+  AForm <-> Burea
+   ||
+   \/
+ ->Shrub
+ ->Robo
+ ->Pardon
+
+AForm become a variable that stores its derived class same as previous ex02
+BUT the Intern class is the one initializing/creating/making the forms instead of the Forms making itself
+
+the concept it like this
+int *i = 42
+int *i stores the address of the integer number
+while
+AForm* = &any derived class form
+stores only its derived class's address
+
+i tried the Harl exercise method (CPP01 ex05/06)
+& when compiling, there is error saying is local address
+
+turns out it needs to be dynamically allocated using new 
+(similar to Zombie hordes CPP01 ex01)
+becase AForm* (address)
+
+when there is dynamic allocation of memory istead of static memory
+there will be leaks
+
+we can either delete it at main() 
+manually which is less work
+
+OR 
+
+automotically by implementing delete in Intern Class which effect
+deconstructor, copy operator and copy assingment operator (affected area)
+
+
+THIS HOEVER posses a challenge as we cannot use vector container #include <vector>
+as we need to store each form's address created which vector can auto allocate space
+but still need to implement in the affected areas
+imagine push swap's stack wehre we can manipulate the "stack"
+when there is a new form created reffer below
+[a] [null] [null]...
+push_back
+[b] [a] [null]...
+*clonning and push_back is invole in the copy asisngment operator
+
+we can make a sudo vector by allocate an AForm* array...
+"AForm* arr[number]" as an attribute.
+this however limits the number of form address it can store for the Intern class
+as the allocation of space is fixed by number we decide to allocate 
+& instead of push_back, when a new form is created,
+[a] [null] [null]...
+i++;
+[a] [b] [null]...
+
+the final touch is to delete the array using loop
+
+I have option a & b (refer to AForm* Inter::makeform())
+wehre a is to delete manually at main()
+and b automatically delete but IT only stores 1 single address
+if there are mutiplle AForm* it will be overided by the latest one
+as shown below 
+
+int main ()
+{
+	Intern noob;
+	AForm* rrf1 = noob.makeForm("robo", "Bender");
+	AForm* rrf2 = noob.makeForm("shrub", "Bender");
+	AForm* rrf3 = noob.makeForm("pardon", "Bender");
+
+	std::cout << rrf1;
+	std::cout << rrf2;
+	std::cout << rrf3;
+	//it will run the AForm's insertion operator but shows address
+	output = all 3 same address
+
+	std::cout << *rrf1;
+	std::cout << *rrf2;
+	std::cout << *rrf3;
+	//it will run the AForm's insertion operator & show from'detail
+	output = all same pardon form
+	
+	return 0;
+}
+
+//execute trough Burea 
+void Bureaucrat::signForm(AForm& form)
+only checks the form if it is signed or not
+if not it will tell you why
+
+void Bureaucrat::executeForm(AForm const & form)
+will execute form WITHOUT throwing exception
+-------
+//execute trough From's Concrete calss
+void AForm::execute(Bureaucrat const & executor) const
+will check if it is signed & able to executre before executing
+if not WILL throw exceptions
+
+void AForm::beSigned(const Bureaucrat& burea)
+will change _signed to true (aka sign form) else exception error
